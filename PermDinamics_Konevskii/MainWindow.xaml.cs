@@ -20,9 +20,27 @@ namespace PermDinamics_Konevskii
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Classes.PointInfo> pointsInfo = new List<Classes.PointInfo>();
+        public static MainWindow init;
         public MainWindow()
         {
             InitializeComponent();
+            init = this;
+        }
+        public enum pages
+        {
+            main,
+            chart
+        }
+        public void OpenPages(pages _pages)
+        {
+            if(_pages == pages.main)
+            {
+                frame.Navigate(new Pages.Main(this));
+            }
+            else if{
+                frame.Navigate(new Pages.Chart(this));
+            }
         }
     }
 }
