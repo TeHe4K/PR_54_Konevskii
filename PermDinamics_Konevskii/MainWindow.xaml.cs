@@ -38,7 +38,7 @@ namespace PermDinamics_Konevskii
             {
                 frame.Navigate(new Pages.Main(this));
             }
-            else if{
+            else if(_pages == pages.chart){
                 frame.Navigate(new Pages.Chart(this));
             }
         }
