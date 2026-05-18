@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PermDinamics_Konevskii.Pages
 {
@@ -29,7 +18,23 @@ namespace PermDinamics_Konevskii.Pages
 
         private void OpenPageChart(object sender, RoutedEventArgs e)
         {
-            float value = Convert.ToInt32(tb_value.Text);
+            double value;
+            if (!double.TryParse(tb_value.Text, NumberStyles.Float, CultureInfo.CurrentCulture, out value) &&
+                !double.TryParse(tb_value.Text, NumberStyles.Float, CultureInfo.InvariantCulture, out value))
+            {
+                MessageBox.Show("Введите числовое значение курса.", "Некорректное значение",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (value <= 0)
+            {
+                MessageBox.Show("Начальное значение курса должно быть больше нуля.", "Некорректное значение",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            mainWindow.pointsInfo.Clear();
             mainWindow.pointsInfo.Add(new Classes.PointInfo(value));
             mainWindow.OpenPages(MainWindow.pages.chart);
         }

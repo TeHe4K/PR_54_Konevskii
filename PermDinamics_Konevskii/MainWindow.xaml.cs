@@ -26,6 +26,7 @@ namespace PermDinamics_Konevskii
         {
             InitializeComponent();
             init = this;
+            OpenPages(pages.main);
         }
         public enum pages
         {

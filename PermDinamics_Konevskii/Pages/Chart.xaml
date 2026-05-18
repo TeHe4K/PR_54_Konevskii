@@ -19,6 +19,8 @@
               Background="#7fffffff">
             <Label x:Name="current_value" Content="Тек. Знач:" Margin="10,10,10,0" VerticalAlignment="Top"/>
             <Label x:Name="average_value" Content="Сред. Знач:" Margin="10,36,10,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="show_average" Content="Показать среднее" IsChecked="True" Margin="14,68,10,0"
+                      VerticalAlignment="Top" Checked="AverageVisibilityChanged" Unchecked="AverageVisibilityChanged"/>
         </Grid>
     </Grid>
 </Page>
